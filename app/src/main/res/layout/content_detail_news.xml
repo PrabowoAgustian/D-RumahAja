@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_normal">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/sectionNewsTextView"
+        style="@style/mediumHkBoldTextView"
+        android:text="@string/label_quote"
+        android:textColor="@color/soft_blue"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleNewsTextview"
+        style="@style/largeHkBoldTextView"
+        android:layout_marginTop="@dimen/margin_small"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:background="@color/colorAccent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/byLineNewsTextView"
+        style="@style/normalHkBoldTextView"
+        android:layout_marginBottom="@dimen/margin_very_very_small"
+        android:textColor="@color/grey"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dateNewsTextView"
+        style="@style/normalHkBoldTextView"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:textColor="@color/grey"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/contentNewsTextView"
+        style="@style/mediumHkBoldTextView"
+        android:textColor="@color/grey"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/urlNewsTextView"
+        style="@style/mediumHkBoldTextView"
+        android:textColorLink="@color/blue"
+        android:textStyle="italic"
+        android:autoLink="all"
+        android:clickable="true"/>
+
+</LinearLayout>
