@@ -40,7 +40,7 @@
                     android:text="@string/label_top_headline"
                     android:layout_marginStart="@dimen/margin_small"
                     android:textColor="@color/blue"
-                    android:visibility="gone"/>
+                    android:visibility="visible"/>
 
                 <include
                     android:id="@+id/areaHeader"

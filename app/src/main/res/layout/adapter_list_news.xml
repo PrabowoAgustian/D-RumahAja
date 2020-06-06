@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools = "http://schemas.android.com/tools">
-
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="trendingRepo"
             type="com.adiconsulting.dirumahaja.feature.ui.main.TopHeadlineNewsVM" />
@@ -40,6 +37,7 @@
                 style="@style/mediumHkBoldTextView"
                 android:maxLines="3"
                 android:ellipsize="end"
+                android:text="@{trendingRepo.title}"
                 android:textSize="@dimen/text_large"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -55,6 +53,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/authorTextview"
                 style="@style/normalHkBoldTextView"
+                android:text="@{trendingRepo.author}"
                 android:textColor="@color/grey"/>
         </LinearLayout>
 
@@ -66,5 +65,4 @@
             android:background="@color/colorAccent" />
 
     </RelativeLayout>
-
 </layout>

@@ -1,10 +1,10 @@
 package com.adiconsulting.dirumahaja.feature.ui.main
 
 import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import butterknife.OnClick
 import com.adiconsulting.dirumahaja.R
 import com.adiconsulting.dirumahaja.base.ViewModelProviderFactory
 import com.adiconsulting.dirumahaja.feature.entity.Data
@@ -24,12 +24,18 @@ class HomeActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)
+        initComponent()
         initDataViewModel()
     }
 
-    override fun onResume() {
-        super.onResume()
-        initComponent()
+    private fun initComponent() {
+        newsRecycleView.layoutManager = LinearLayoutManager(this)
+        newsRecycleView.adapter = adapter
+        newsRecycleView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        adapter.updateList(viewModel.getEmptyListForShimmer())
+        swipeRefresh.setOnRefreshListener {
+            refresh()
+        }
     }
 
     private fun initDataViewModel() {
@@ -48,19 +54,12 @@ class HomeActivity : DaggerAppCompatActivity() {
         })
     }
 
-    private fun initComponent() {
-        newsRecycleView.layoutManager = LinearLayoutManager(this)
-        newsRecycleView.adapter = adapter
-        newsRecycleView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        newsRecycleView.setOnClickListener {}
-        adapter.updateList(viewModel.getEmptyListForShimmer())
-        swipeRefresh.setOnRefreshListener {
-            refresh()
-        }
-    }
-
     private fun refresh() {
         viewModel.getListTopHeadline(true)
         adapter.updateList(viewModel.getEmptyListForShimmer())
+    }
+
+    @OnClick(R.id.searchNews)
+    fun searchClicked(){
     }
 }

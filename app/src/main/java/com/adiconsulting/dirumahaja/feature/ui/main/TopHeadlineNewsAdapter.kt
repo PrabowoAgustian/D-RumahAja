@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.adiconsulting.dirumahaja.R
 import com.adiconsulting.dirumahaja.feature.entity.ListTopHeadlineNews
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.adiconsulting.dirumahaja.databinding.AdapterListNewsBinding
+import com.adiconsulting.dirumahaja.extn.loadImage
 
 const val SHIMMER = 0
 const val DATA = 1
@@ -18,11 +20,11 @@ class TopHeadlineNewsRepoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         if(SHIMMER == viewType){
-            var view = LayoutInflater.from(parent.context).inflate(R.layout.shimmer_item,null)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.shimmer_item,null)
             return ShimmerViewHolder(view)
 
-        }else {
-            val dataItemBinding: RepoItemBinding = DataBindingUtil.inflate(
+        } else {
+            val dataItemBinding: AdapterListNewsBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
                 R.layout.adapter_list_news,
                 parent, false
@@ -58,11 +60,11 @@ class ShimmerViewHolder(private var view: View) : RecyclerView.ViewHolder(view) 
     }
 }
 
-class DataViewHolder(private var binding: RepoItemBinding) :
+class DataViewHolder(private var binding: AdapterListNewsBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(dataItem: ListTopHeadlineNews?) {
         binding.trendingRepo = TopHeadlineNewsVM(dataItem,binding.root.resources)
-        binding.avatarImage.loadImage(dataItem?.urlToImage?:"")
+        binding.newImageView.loadImage(dataItem?.urlToImage?:"")
     }
 }
