@@ -1,10 +1,10 @@
-package com.adiconsulting.dirumahaja.feature.ui.main
+package com.adiconsulting.dirumahaja.feature.ui.adapter
 
 import android.content.res.Resources
 import androidx.databinding.BaseObservable
 import com.adiconsulting.dirumahaja.feature.entity.ListTopHeadlineNews
 
-class TopHeadlineNewsVM constructor(private var topHeadlineNewsVM: ListTopHeadlineNews?,private var res: Resources?) : BaseObservable() {
+class NewsVM constructor(private var topHeadlineNewsVM: ListTopHeadlineNews?, private var res: Resources?) : BaseObservable() {
     fun getTitle(): String? {
         return topHeadlineNewsVM?.title
     }

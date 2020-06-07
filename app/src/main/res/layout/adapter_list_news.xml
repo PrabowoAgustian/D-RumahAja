@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="trendingRepo"
-            type="com.adiconsulting.dirumahaja.feature.ui.main.TopHeadlineNewsVM" />
+            type="com.adiconsulting.dirumahaja.feature.ui.adapter.NewsVM" />
     </data>
 
     <RelativeLayout

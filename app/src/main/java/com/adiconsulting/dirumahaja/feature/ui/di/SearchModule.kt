@@ -10,19 +10,20 @@ import dagger.Provides
 import retrofit2.Retrofit
 
 @Module
-class HomeModule {
+class SearchModule {
+
     @Provides
-    internal fun provideTopHeadlineNewsRepoApi(retrofit: Retrofit): NewsApi {
+    internal fun provideeNewsRepoApi(retrofit: Retrofit): NewsApi {
         return retrofit.create(NewsApi::class.java)
     }
 
     @Provides
-    internal fun provideTopHeadlineNewseRepository( api: NewsApi): TopHeadLineNewsRepository {
+    internal fun provideNewseRepository( api: NewsApi): TopHeadLineNewsRepository {
         return TopHeadlineNewsRepositoryImpl(api)
     }
 
     @Provides
-    internal fun provideTopHeadlineNewsRepoUseCase( topHeadlineNewsRepository: TopHeadLineNewsRepository): TopHeadlineNewsRepoUseCase {
+    internal fun provideNewsRepoUseCase( topHeadlineNewsRepository: TopHeadLineNewsRepository): TopHeadlineNewsRepoUseCase {
         return TopHeadlineNewsRepoUseCaseImpl(topHeadlineNewsRepository)
     }
 }

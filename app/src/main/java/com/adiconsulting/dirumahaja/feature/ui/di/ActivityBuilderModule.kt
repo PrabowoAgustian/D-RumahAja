@@ -3,6 +3,7 @@ package com.adiconsulting.dirumahaja.feature.ui.di
 import com.adiconsulting.dirumahaja.feature.di.scopes.ActivityScoped
 import com.adiconsulting.dirumahaja.feature.ui.main.HomeActivity
 import com.adiconsulting.dirumahaja.feature.ui.main.HomeViewModel
+import com.adiconsulting.dirumahaja.feature.ui.search.SearchActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -21,4 +22,8 @@ import dagger.android.ContributesAndroidInjector
     @ActivityScoped
     @ContributesAndroidInjector(modules = [HomeViewModelModule::class, HomeModule::class])
     abstract fun contributeHomeActivity(): HomeActivity?
+
+    @ActivityScoped
+    @ContributesAndroidInjector(modules = [SearchViewModelModule::class, SearchModule::class])
+    abstract fun contributeSearchActivity(): SearchActivity?
 }

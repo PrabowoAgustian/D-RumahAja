@@ -1,4 +1,4 @@
-package com.adiconsulting.dirumahaja.feature.ui.main
+package com.adiconsulting.dirumahaja.feature.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +13,7 @@ import com.adiconsulting.dirumahaja.extn.loadImage
 
 const val SHIMMER = 0
 const val DATA = 1
-class TopHeadlineNewsRepoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsRepoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var dataList = mutableListOf<ListTopHeadlineNews?>()
 
@@ -21,15 +21,18 @@ class TopHeadlineNewsRepoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         if(SHIMMER == viewType){
             val view = LayoutInflater.from(parent.context).inflate(R.layout.shimmer_item,null)
-            return ShimmerViewHolder(view)
-
+            return ShimmerViewHolder(
+                view
+            )
         } else {
             val dataItemBinding: AdapterListNewsBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
                 R.layout.adapter_list_news,
                 parent, false
             )
-            return DataViewHolder(dataItemBinding)
+            return DataViewHolder(
+                dataItemBinding
+            )
         }
     }
 
@@ -64,7 +67,11 @@ class DataViewHolder(private var binding: AdapterListNewsBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(dataItem: ListTopHeadlineNews?) {
-        binding.trendingRepo = TopHeadlineNewsVM(dataItem,binding.root.resources)
+        binding.trendingRepo =
+            NewsVM(
+                dataItem,
+                binding.root.resources
+            )
         binding.newImageView.loadImage(dataItem?.urlToImage?:"")
     }
 }
