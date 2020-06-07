@@ -13,7 +13,6 @@ interface NewsApi {
     fun getListTopHeadlineNews(
         @Query("country") country: String,
         @Query("apiKey") apiKey: String) : Call<List<TopHeadLineNewsResponse>>
-//            Deferred<List<TopHeadLineNewsResponse>>
 
     @Headers("Content-Type: application/json")
     @GET("v2/everything")

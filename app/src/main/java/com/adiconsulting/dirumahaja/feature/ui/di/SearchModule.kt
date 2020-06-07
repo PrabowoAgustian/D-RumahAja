@@ -1,10 +1,10 @@
 package com.adiconsulting.dirumahaja.feature.ui.di
 
 import com.adiconsulting.data.api.NewsApi
-import com.adiconsulting.data.repository.TopHeadlineNewsRepositoryImpl
-import com.adiconsulting.domain.repository.TopHeadLineNewsRepository
-import com.adiconsulting.domain.usecase.TopHeadlineNewsRepoUseCase
-import com.adiconsulting.domain.usecase.TopHeadlineNewsRepoUseCaseImpl
+import com.adiconsulting.data.repository.SearchNewsRepositoryImpl
+import com.adiconsulting.domain.repository.SearchNewsRepository
+import com.adiconsulting.domain.usecase.SearchNewsRepoUseCase
+import com.adiconsulting.domain.usecase.SearchNewsRepoUseCaseImpl
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -18,12 +18,12 @@ class SearchModule {
     }
 
     @Provides
-    internal fun provideNewseRepository( api: NewsApi): TopHeadLineNewsRepository {
-        return TopHeadlineNewsRepositoryImpl(api)
+    internal fun provideNewseRepository( api: NewsApi): SearchNewsRepository {
+        return SearchNewsRepositoryImpl(api)
     }
 
     @Provides
-    internal fun provideNewsRepoUseCase( topHeadlineNewsRepository: TopHeadLineNewsRepository): TopHeadlineNewsRepoUseCase {
-        return TopHeadlineNewsRepoUseCaseImpl(topHeadlineNewsRepository)
+    internal fun provideNewsRepoUseCase( searchNewsRepository: SearchNewsRepository): SearchNewsRepoUseCase {
+        return SearchNewsRepoUseCaseImpl(searchNewsRepository)
     }
 }

@@ -5,14 +5,14 @@ import com.adiconsulting.dirumahaja.base.BaseViewModel
 import com.adiconsulting.dirumahaja.feature.entity.Data
 import com.adiconsulting.dirumahaja.feature.entity.ListTopHeadlineNews
 import com.adiconsulting.dirumahaja.feature.maper.DomainToPresentationMapper
-import com.adiconsulting.domain.usecase.TopHeadlineNewsRepoUseCase
+import com.adiconsulting.domain.usecase.SearchNewsRepoUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class SearchViewModel@Inject constructor(private var useCase : TopHeadlineNewsRepoUseCase) : BaseViewModel(){
+class SearchViewModel@Inject constructor(private var useCase : SearchNewsRepoUseCase) : BaseViewModel(){
     private val mapper  = DomainToPresentationMapper()
     private var dataList = MutableLiveData<Data<List<ListTopHeadlineNews>>>()
 
@@ -21,7 +21,7 @@ class SearchViewModel@Inject constructor(private var useCase : TopHeadlineNewsRe
             dataList.postValue(dataList.value)
         }else {
             launch {
-                val deviceInfo = useCase.getListTopHeadlineNewsRepos()
+                val deviceInfo = useCase.getListNewsRepos()
                 deviceInfo.consumeEach { response ->
                     val mappedResponse = mapper.mapTo(response)
                     withContext(Dispatchers.Main) {
